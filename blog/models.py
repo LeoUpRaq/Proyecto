@@ -37,7 +37,7 @@ class Eventos(models.Model):
     )
     resp = models.ForeignKey(Hotel,on_delete=models.CASCADE,help_text="hotel : ",null=False)
     evn1 = models.CharField(max_length=10,choices=EV_HOT,help_text="Evento 1: ")
-    descripcion = models.CharField(max_length=100,help_text="Breve informacion")
+    descripcion = models.CharField(max_length=200,help_text="Breve informacion")
     thumbnail = models.ImageField(upload_to=event_directory_path,blank=True,null=True)
 
 
@@ -65,7 +65,9 @@ class Room(models.Model):
     capacity = models.CharField(max_length=10,choices=CAPACITY_ROOM,default='1',blank=True,help_text="Numero de Camas")
     descripcion = models.CharField(max_length=100,help_text="Breve informacion")
     resposable = models.ForeignKey(Hotel,on_delete=models.CASCADE,help_text="Hotel admin")
-    e1 = models.ForeignKey(Eventos,on_delete=models.CASCADE,help_text="EVENTO 1")
+    e1 = models.ForeignKey(Eventos,on_delete=models.CASCADE,related_name='E1',default='1',help_text="EVENTO 1")
+    e2 = models.ForeignKey(Eventos,on_delete=models.CASCADE,related_name='E2',default='2',help_text="EVENTO 1")
+    e3 = models.ForeignKey(Eventos,on_delete=models.CASCADE,related_name='E3',default='3',help_text="EVENTO 1")
     check_in = models.DateTimeField()
     check_out = models.DateTimeField()
 
