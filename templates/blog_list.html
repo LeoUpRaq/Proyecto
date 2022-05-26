@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock title %}
+
+{% block extra_head %}{% endblock extra_head %}
+
+
+{% block navbar %}
+{% include 'components/navbar.html' %}
+{% endblock navbar %}
+
+
+{% block content %}
+
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap w-full mb-8">
+        <div class="w-full mb-6 lg:mb-0">
+          <h1 class="sm:text-4xl text-5xl font-bold font-medium title-font mb-2 text-gray-900">Lista Hoteles</h1>
+          <div class="h-1 w-20 bg-indigo-500 rounded"></div>
+        </div>
+      </div>
+      <div class="flex flex-wrap -m-4">
+
+        {%for post in posts%}
+
+        <div class="lg:w-1/4 p-4 w-1/2">
+          <a class="block relative h-48 rounded overflow-hidden">
+            <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{post.thumbnail.url}}">
+          </a>
+          <div class="mt-4">
+            <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY {{post.nombre}}</h3>
+            <h2 class="text-gray-900 title-font text-lg font-medium">{{post.descripcion}}</h2>
+            <p class="mt-1">$16.00</p>
+          </div>
+        </div>
+        
+        {%endfor%}
+      </div>
+    </div>
+  </section>
+
+  
+{% endblock content %}
+
+
+
+{% block footer %}
+{% include 'components/footer.html'%}
+{% endblock footer %}
+
+
+
+{% block javascript %}{% endblock javascript %}
